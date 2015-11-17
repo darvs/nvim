@@ -45,6 +45,11 @@ syntax on
 set modeline
 set modelines=5
 
+" ------------------------------------------------------------
+" Disable auto-continue comment, that screws with cut & paste
+" ------------------------------------------------------------
+
+autocmd FileType * setlocal formatoptions-=r
 
 " ------------------------------------------------------------
 " Numeric keyboard
