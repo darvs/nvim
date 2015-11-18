@@ -38,6 +38,17 @@ filetype plugin indent on    " required
 
 syntax on
 
+
+" ------------------------------------------------------------
+" Key mappings
+" ------------------------------------------------------------
+map <C-p>	 :bprevious<CR>
+map <C-n>	 :bnext<CR>
+
+nmap [ 		:bprevious<CR>
+nmap ]		:bnext<CR>
+nmap n		:NERDTree<CR>
+
 " ------------------------------------------------------------
 " Allow modelines, screw debian
 " ------------------------------------------------------------
