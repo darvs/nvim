@@ -18,25 +18,15 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/sudo
     zgen oh-my-zsh plugins/command-not-found
     zgen load zsh-users/zsh-syntax-highlighting
-    # autosuggestion should be loaded last
-    #   and most of all after zsh-syntax-highlighting
-    # zgen load tarruda/zsh-autosuggestions
 
     # completions
     zgen load zsh-users/zsh-completions src
 
     # theme
-    # zgen oh-my-zsh themes/arrow
     zgen load bhilburn/powerlevel9k powerlevel9k.zsh-theme
 
     # save all to init script
     zgen save
 fi
-
-# # Enable autosuggestions automatically.
-# zle-line-init() {
-# 	zle autosuggest-start
-# }
-# zle -N zle-line-init
 
 # vim: ts=4
