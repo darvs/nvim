@@ -63,5 +63,5 @@ let g:syntastic_check_on_wq = 0
 " ------------------------------------------------------------
 " Use common config
 " ------------------------------------------------------------
-source ~/vimrc.common
+source ~/.vimrc.common
 
