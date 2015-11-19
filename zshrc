@@ -11,6 +11,15 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+#----------------------------------
+# theme
+#----------------------------------
+
+source ~/.dotfiles/powerlevel9k/powerlevel9k.zsh-theme
+
+#----------------------------------
+# zgen
+#----------------------------------
 
 if [ -f ~/.zshrc.zgen ]; then
 	source ~/.zshrc.zgen
