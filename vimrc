@@ -17,7 +17,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'wookieHangover/jshint.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'bling/vim-airline'
 
 
 " " All of your Plugins must be added before the following line
