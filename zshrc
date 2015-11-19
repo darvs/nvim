@@ -8,7 +8,20 @@ bindkey -v
 zstyle :compinstall filename '~/.zshrc'
 
 autoload -Uz compinit
-compinit
+
+#
+# darvs: On OSX because zsh is installed by homebrew
+# compinit will complain that some of its directories
+# are insecure while sudoing as root.
+#
+if [[ "$OSTYPE" =~ darwin ]]; then
+	compinit -u
+else
+	compinit
+fi
+
+
+
 # End of lines added by compinstall
 
 #----------------------------------
