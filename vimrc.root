@@ -1,0 +1,5 @@
+" 
+" Use common config
+"
+source ~/vimrc.common
+
