@@ -70,6 +70,9 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
+" Fix a problem where the space is not wide enough
+let g:airline_symbols.space = "\ua0"
+
 " unicode symbols
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
