@@ -59,6 +59,15 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" let g:syntastic_debug = 1
+
+" ------------------------------------------------------------
+" Syntastic Coffeescript
+" ------------------------------------------------------------
+au BufRead,BufNewFile *.coffee set filetype=coffee
+let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
+" let g:syntastic_coffee_coffeelint_args = "--reporter csv"
+
 " ------------------------------------------------------------
 " Use common config
 " ------------------------------------------------------------
