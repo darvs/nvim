@@ -57,6 +57,12 @@ if [ -d ~/bin ]; then
 	PATH=$PATH:~/bin
 fi
 
+#----------------------------------
+# .zshrc.local
+#----------------------------------
+
+if [ -f ~/.zshrc.local ]; then
+	source ~/.zshrc.local
 fi
 
 #----------------------------------
