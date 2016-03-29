@@ -44,7 +44,10 @@ fi
 # autoenv
 #----------------------------------
 
-source `which activate.sh`
+activate=`which activate.sh`
+if [ -f activate ]; then
+	source `which activate.sh`
+fi
 
 #----------------------------------
 # ~/bin
