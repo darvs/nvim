@@ -33,17 +33,27 @@ export TERM='xterm-256color'
 source ~/.dotfiles/powerlevel9k/powerlevel9k.zsh-theme
 
 #----------------------------------
+# zgen
+#----------------------------------
+
+if [ -f ~/.zshrc.zgen ]; then
+	source ~/.zshrc.zgen
+fi
+
+#----------------------------------
 # autoenv
 #----------------------------------
 
 source `which activate.sh`
 
 #----------------------------------
-# zgen
+# ~/bin
 #----------------------------------
 
-if [ -f ~/.zshrc.zgen ]; then
-	source ~/.zshrc.zgen
+if [ -d ~/bin ]; then
+	PATH=$PATH:~/bin
+fi
+
 fi
 
 #----------------------------------
