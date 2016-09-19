@@ -28,7 +28,9 @@ fi
 # theme
 #----------------------------------
 
-source ~/.dotfiles/powerlevel9k/powerlevel9k.zsh-theme
+if [[ "$TERM" == "xterm-256color" ]]; then
+	source ~/.dotfiles/powerlevel9k/powerlevel9k.zsh-theme
+fi
 
 #----------------------------------
 # zgen
