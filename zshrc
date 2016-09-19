@@ -24,6 +24,8 @@ fi
 
 # End of lines added by compinstall
 
+export TERM='xterm-256color'
+
 #----------------------------------
 # theme
 #----------------------------------
@@ -39,5 +41,49 @@ fi
 if [ -f ~/.zshrc.zgen ]; then
 	source ~/.zshrc.zgen
 fi
+
+#----------------------------------
+# autoenv
+#----------------------------------
+
+activate=`which activate.sh`
+if [ -f activate ]; then
+	source `which activate.sh`
+fi
+
+#----------------------------------
+# ~/bin
+#----------------------------------
+
+if [ -d ~/bin ]; then
+	PATH=$PATH:~/bin
+fi
+
+#----------------------------------
+# .zshrc.local
+#----------------------------------
+
+if [ -f ~/.zshrc.local ]; then
+	source ~/.zshrc.local
+fi
+
+#----------------------------------
+# iTerm2 integration
+#----------------------------------
+
+if [ -f ~/.iterm2_shell_integration.zsh ]; then
+	source ~/.iterm2_shell_integration.zsh
+fi
+
+# $1 = type; 0 - both, 1 - tab, 2 - title
+# rest = text
+setTerminalText () {
+	# echo works in bash & zsh
+	local mode=$1 ; shift
+	echo -ne "\033]$mode;$@\007"
+}
+stt_both  () { setTerminalText 0 $@; }
+stt_tab   () { setTerminalText 1 $@; }
+stt_title () { setTerminalText 2 $@; }
 
 # vim: ts=4
