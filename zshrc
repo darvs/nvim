@@ -24,15 +24,7 @@ fi
 
 # End of lines added by compinstall
 
-export TERM='xterm-256color'
-
-#----------------------------------
-# theme
-#----------------------------------
-
-if [[ "$TERM" == "xterm-256color" ]]; then
-	source ~/.dotfiles/powerlevel9k/powerlevel9k.zsh-theme
-fi
+#export TERM='xterm-256color'
 
 #----------------------------------
 # zgen
@@ -40,15 +32,6 @@ fi
 
 if [ -f ~/.zshrc.zgen ]; then
 	source ~/.zshrc.zgen
-fi
-
-#----------------------------------
-# autoenv
-#----------------------------------
-
-activate=`which activate.sh`
-if [ -f activate ]; then
-	source `which activate.sh`
 fi
 
 #----------------------------------
@@ -65,6 +48,15 @@ fi
 
 if [ -f ~/.zshrc.local ]; then
 	source ~/.zshrc.local
+fi
+
+#----------------------------------
+# autoenv
+#----------------------------------
+
+activate=`which activate.sh`
+if [ -f activate ]; then
+	source `which activate.sh`
 fi
 
 #----------------------------------

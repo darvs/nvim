@@ -5,44 +5,51 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.dotfiles/vim/bundle/Vundle.vim
-call vundle#begin('~/.dotfiles/vim/bundle')
+if &compatible
+  set nocompatible            " be iMproved
+endif
+set runtimepath+=~/.dotfiles/dein.vim
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+if dein#load_state('~/.config/nvim/dein')
+  call dein#begin('~/.config/nvim/dein')
 
+  call dein#add('~/.dotfiles/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('w0rp/ale')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('arcticicestudio/nord-vim')
+  call dein#add('guns/xterm-color-table.vim')
 
-" Other plugins
-Plugin 'wookieHangover/jshint.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+  call dein#end()
+  call dein#save_state()
+endif
 
+filetype plugin indent on
+syntax enable
 
-" " All of your Plugins must be added before the following line
-call vundle#end()            " required
+" set theme
+let g:airline_theme='nord'
+colorscheme nord
 
-filetype plugin indent on    " required
+" activate deoplete
+let g:deoplete#enable_at_startup = 1 
 
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just
-" :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to
-" auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+set number              " Show the line numbers on the left side.
 
-syntax on
+" darvs-patch colorscheme 
+highlight LineNr ctermfg=08
+highlight ErrorMsg ctermfg=15 ctermbg=88 guifg=#00FF00 guibg=#BF616A
 
+" remove the -- INSERT -- on the command line
+set noshowmode
+
+" ale - always keep gutter sign columns
+let g:ale_sign_column_always = 1
 
 " ------------------------------------------------------------
 " Matsie's Autocomplete
 " ------------------------------------------------------------
 
-filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 inoremap <lt>/ </<C-X><C-O>
 
@@ -50,9 +57,9 @@ inoremap <lt>/ </<C-X><C-O>
 " Syntastic
 " ------------------------------------------------------------
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -67,9 +74,3 @@ let g:syntastic_check_on_wq = 0
 au BufRead,BufNewFile *.coffee set filetype=coffee
 let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
 " let g:syntastic_coffee_coffeelint_args = "--reporter csv"
-
-" ------------------------------------------------------------
-" Use common config
-" ------------------------------------------------------------
-source ~/.vimrc.common
-
