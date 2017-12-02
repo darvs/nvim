@@ -14,10 +14,26 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#begin('~/.config/nvim/dein')
 
   call dein#add('~/.dotfiles/dein.vim')
+
+  " Completion
   call dein#add('Shougo/deoplete.nvim')
+
+  " Asynchronous linter
   call dein#add('w0rp/ale')
+ 
+  " Ruby
+  call dein#add('vim-ruby/vim-ruby')
+  call dein#add('Shougo/deoplete-rct')
+  
+  " Nerdtree
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('Xuyuanp/nerdtree-git-plugin')
+
+  " Looks
   call dein#add('vim-airline/vim-airline')
   call dein#add('arcticicestudio/nord-vim')
+
+  " xterm-color-table: provides command :XtermColorTable
   call dein#add('guns/xterm-color-table.vim')
 
   call dein#end()
@@ -43,8 +59,66 @@ highlight ErrorMsg ctermfg=15 ctermbg=88 guifg=#00FF00 guibg=#BF616A
 " remove the -- INSERT -- on the command line
 set noshowmode
 
+" Disable auto paren matching
+"let g:loaded_matchparen = 1
+set matchtime=0
+"set noshowmatch
+hi MatchParen cterm=none ctermbg=88 ctermfg=white
+
 " ale - always keep gutter sign columns
 let g:ale_sign_column_always = 1
+
+" ------------------------------------------------------------
+" Mouse
+" ------------------------------------------------------------
+" Mouse activated in command mode only
+" see :help mouse
+
+set mouse=c
+
+" ------------------------------------------------------------
+" Nerdtree
+" ------------------------------------------------------------
+" https://github.com/scrooloose/nerdtree
+" Good advice on https://medium.com/@victormours/a-better-nerdtree-setup-3d3921abc0b9
+
+nmap n          :NERDTreeToggle<CR>
+
+" Quit on Open
+let NERDTreeQuitOnOpen = 1
+
+" Directory arrows
+let NERDTreeDirArrows = 1
+
+" Disable 'Press ? for Help'
+" let NERDTreeMinimalUI = 1
+
+
+" Open nerdtree if vim is loaded without a file name
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Open nerdtree if vim is loaded with a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" Default arrows
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+" Symbols for nerdtree-git-plugin
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
 " ------------------------------------------------------------
 " Matsie's Autocomplete
@@ -74,3 +148,6 @@ let g:syntastic_check_on_wq = 0
 au BufRead,BufNewFile *.coffee set filetype=coffee
 let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
 " let g:syntastic_coffee_coffeelint_args = "--reporter csv"
+"
+"
+source ~/.config/nvim/vimrc.common
