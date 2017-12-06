@@ -20,7 +20,10 @@ if dein#load_state('~/.config/nvim/dein')
 
   " Asynchronous linter
   call dein#add('w0rp/ale')
- 
+
+  " AsyncRun
+  call dein#add('skywind3000/asyncrun.vim')
+
   " Ruby
   call dein#add('vim-ruby/vim-ruby')
   call dein#add('Shougo/deoplete-rct')
@@ -67,6 +70,19 @@ hi MatchParen cterm=none ctermbg=88 ctermfg=white
 
 " ale - always keep gutter sign columns
 let g:ale_sign_column_always = 1
+
+" ------------------------------------------------------------
+" AsyncRun
+" ------------------------------------------------------------
+
+let g:asyncrun_rootmarks = ['features']
+let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+
+" ------------------------------------------------------------
+" Ruby
+" ------------------------------------------------------------
+
+nmap b :AsyncRun -cwd=<root> cucumber<CR>
 
 " ------------------------------------------------------------
 " Mouse
