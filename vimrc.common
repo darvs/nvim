@@ -4,8 +4,12 @@
 "map <C-p>	 :bprevious<CR>
 "map <C-n>	 :bnext<CR>
 
-nmap [ 		:bprevious<CR>
-nmap ]		:bnext<CR>
+"nmap [ 	:bprevious<CR>
+"nmap ]		:bnext<CR>
+nmap <C-left>	:bp<CR>
+nmap <C-right>	:bn<CR>
+nmap <C-up>	<C-w><up>
+nmap <C-down>	<C-w><down>
 
 " ------------------------------------------------------------
 " Allow modelines, screw debian
