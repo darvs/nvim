@@ -1,5 +1,5 @@
 " ------------------------------------------------------------
-" Vundle
+" dein
 " ------------------------------------------------------------
 
 set nocompatible              " be iMproved, required
@@ -31,6 +31,9 @@ if dein#load_state('~/.config/nvim/dein')
   " Nerdtree
   call dein#add('scrooloose/nerdtree')
   call dein#add('Xuyuanp/nerdtree-git-plugin')
+
+  " Comments
+  call dein#add('scrooloose/nerdcommenter')
 
   " Looks
   call dein#add('vim-airline/vim-airline')
@@ -70,6 +73,12 @@ hi MatchParen cterm=none ctermbg=88 ctermfg=white
 
 " ale - always keep gutter sign columns
 let g:ale_sign_column_always = 1
+
+" ------------------------------------------------------------
+" Global config
+" ------------------------------------------------------------
+
+let mapleader="\\"
 
 " ------------------------------------------------------------
 " AsyncRun
@@ -135,6 +144,16 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+
+" ------------------------------------------------------------
+" NERDCommenter
+" ------------------------------------------------------------
+
+" unmap c in visual mode because it breaks everything
+" by _c_hanging text (deleting and switching to insert mode)
+
+vmap c <Nop>
+vmap <leader><Space> <Plug>NERDCommenterToggle
 
 " ------------------------------------------------------------
 " Matsie's Autocomplete
