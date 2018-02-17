@@ -1,7 +1,7 @@
 ZGEN_RESET_ON_CHANGE=(~/.zshrc ~/.zshrc.zgen)
 
 # load zgen
-source ~/.config/dotfiles/dotfiles/zgen/zgen.zsh
+source ~/.config/dotfiles/zgen/zgen.zsh
 
 # check if there's no init script
 if ! zgen saved; then
