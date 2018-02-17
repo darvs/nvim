@@ -8,7 +8,7 @@ filetype off                  " required
 if &compatible
   set nocompatible            " be iMproved
 endif
-set runtimepath+=~/.dotfiles/dein.vim
+set runtimepath+=~/.config/dotfiles/dein.vim
 
 if dein#load_state('~/.config/nvim/dein')
   call dein#begin('~/.config/nvim/dein')
