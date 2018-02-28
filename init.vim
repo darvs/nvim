@@ -8,12 +8,12 @@ filetype off                  " required
 if &compatible
   set nocompatible            " be iMproved
 endif
-set runtimepath+=~/.config/dotfiles/dein.vim
+set runtimepath+=~/.config/nvim/dein.vim
 
 if dein#load_state('~/.config/nvim/dein')
   call dein#begin('~/.config/nvim/dein')
 
-  call dein#add('~/.dotfiles/dein.vim')
+  call dein#add('~/.config/nvim/dein.vim')
 
   " Completion
   call dein#add('Shougo/deoplete.nvim')
