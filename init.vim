@@ -49,6 +49,10 @@ endif
 filetype plugin indent on
 syntax enable
 
+" call dein#install() if there are any plugins not installed yet
+if dein#check_install()
+	call dein#install()
+endif
 " set theme
 let g:airline_theme='nord'
 colorscheme nord
