@@ -10,6 +10,13 @@ if &compatible
 endif
 set runtimepath+=~/.config/nvim/dein.vim
 
+  if $TERM =~ 'linux'
+    let g:airline_powerline_fonts = 0
+    let g:airline_theme = 'base16_ocean'
+  else
+    let g:airline_powerline_fonts = 1
+  endif
+
 if dein#load_state('~/.config/nvim/dein')
   call dein#begin('~/.config/nvim/dein')
 
@@ -27,7 +34,7 @@ if dein#load_state('~/.config/nvim/dein')
   " Ruby
   call dein#add('vim-ruby/vim-ruby')
   call dein#add('Shougo/deoplete-rct')
-  
+
   " Nerdtree
   call dein#add('scrooloose/nerdtree')
   call dein#add('Xuyuanp/nerdtree-git-plugin')
@@ -36,9 +43,9 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('scrooloose/nerdcommenter')
 
   " Looks
-  let g:airline_powerline_fonts = 1
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('arcticicestudio/nord-vim')
+ call dein#add('vim-airline/vim-airline')
+ call dein#add('vim-airline/vim-airline-themes')
+ call dein#add('arcticicestudio/nord-vim')
 
   " xterm-color-table: provides command :XtermColorTable
   call dein#add('guns/xterm-color-table.vim')
@@ -54,16 +61,18 @@ syntax enable
 if dein#check_install()
 	call dein#install()
 endif
-" set theme
-let g:airline_theme='nord'
-colorscheme nord
 
 " activate deoplete
-let g:deoplete#enable_at_startup = 1 
+let g:deoplete#enable_at_startup = 1
 
 set number              " Show the line numbers on the left side.
 
-" darvs-patch colorscheme 
+" set theme
+if $TERM !~ 'linux'
+  colorscheme nord
+endif
+
+" darvs-patch colorscheme
 highlight LineNr ctermfg=08
 highlight ErrorMsg ctermfg=15 ctermbg=88 guifg=#00FF00 guibg=#BF616A
 
