@@ -36,6 +36,7 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('scrooloose/nerdcommenter')
 
   " Looks
+  let g:airline_powerline_fonts = 1
   call dein#add('vim-airline/vim-airline')
   call dein#add('arcticicestudio/nord-vim')
 
