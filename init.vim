@@ -6,19 +6,20 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 if &compatible
-  set nocompatible            " be iMproved
+	set nocompatible            " be iMproved
 endif
 set runtimepath+=~/.config/nvim/dein.vim
 
-  if $TERM =~ 'linux'
-    let g:airline_powerline_fonts = 0
-    let g:airline_theme = 'base16_ocean'
-  else
-    let g:airline_powerline_fonts = 1
-  endif
+if $TERM =~ 'linux'
+  let g:airline_powerline_fonts = 0
+  let g:airline_theme = 'base16_ocean'
+else
+  let g:airline_powerline_fonts = 1
+  let g:airline_theme = 'nord'
+endif
 
 if dein#load_state('~/.config/nvim/dein')
-  call dein#begin('~/.config/nvim/dein')
+	call dein#begin('~/.config/nvim/dein')
 
   call dein#add('~/.config/nvim/dein.vim')
 
@@ -32,8 +33,8 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('skywind3000/asyncrun.vim')
 
   " Ruby
-  call dein#add('vim-ruby/vim-ruby')
-  call dein#add('Shougo/deoplete-rct')
+  call dein#add('vim-ruby/vim-ruby', {'on_ft': ['ruby', 'cucumber']})
+  call dein#add('Shougo/deoplete-rct', {'on_ft': ['ruby', 'cucumber']})
 
   " Nerdtree
   call dein#add('scrooloose/nerdtree')
@@ -41,6 +42,10 @@ if dein#load_state('~/.config/nvim/dein')
 
   " Comments
   call dein#add('scrooloose/nerdcommenter')
+
+  " Ansible
+  "call dein#add('pearofducks/ansible-vim', {'lazy': 1, 'on_ft': ['ansible', 'ansible_hosts', 'ansible_template', 'yaml.ansible', 'ruby.jinja2']})
+  call dein#add('chase/vim-ansible-yaml', {'on_ft': ['ansible', 'ansible_hosts', 'ansible_template', 'yaml.ansible', 'ruby.jinja2']})
 
   " Looks
  call dein#add('vim-airline/vim-airline')
@@ -61,6 +66,10 @@ syntax enable
 if dein#check_install()
 	call dein#install()
 endif
+
+" Don't wait for Python
+let g:python_host_skip_check = 1
+let g:python3_host_skip_check = 1
 
 " activate deoplete
 let g:deoplete#enable_at_startup = 1
