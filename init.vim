@@ -32,6 +32,9 @@ if dein#load_state('~/.config/nvim/dein')
   " AsyncRun
   call dein#add('skywind3000/asyncrun.vim')
 
+  " Go
+  call dein#add('fatih/vim-go')
+
   " Ruby
   call dein#add('vim-ruby/vim-ruby', {'on_ft': ['ruby', 'cucumber']})
   call dein#add('Shougo/deoplete-rct', {'on_ft': ['ruby', 'cucumber']})
