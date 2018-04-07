@@ -43,6 +43,9 @@ if dein#load_state('~/.config/nvim/dein')
   " Comments
   call dein#add('scrooloose/nerdcommenter')
 
+  " Git
+  call dein#add('tpope/vim-fugitive')
+
   " Ansible
   "call dein#add('pearofducks/ansible-vim', {'lazy': 1, 'on_ft': ['ansible', 'ansible_hosts', 'ansible_template', 'yaml.ansible', 'ruby.jinja2']})
   call dein#add('chase/vim-ansible-yaml', {'on_ft': ['ansible', 'ansible_hosts', 'ansible_template', 'yaml.ansible', 'ruby.jinja2']})
