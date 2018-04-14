@@ -135,6 +135,43 @@ augroup ruby_mappings
 	autocmd FileType ruby,cucumber nmap <buffer> b :AsyncRun -cwd=<root> cucumber<CR>
 augroup END
 
+" ------------------------------------------------------------
+" Go
+" ------------------------------------------------------------
+
+augroup go_mappings
+	autocmd!
+	autocmd FileType go nmap <buffer> b :GoBuild<CR>
+	autocmd FileType go nmap <buffer> <leader>b :GoBuild<CR>
+	autocmd FileType go nmap <buffer> <leader>i :GoInstall<CR>
+
+	" TABS
+	autocmd FileType go set noexpandtab
+	autocmd FileType go set shiftwidth=4
+	autocmd FileType go set softtabstop=4
+	autocmd FileType go set tabstop=4
+
+	" Highlights
+	let g:go_highlight_build_constraints = 1
+	let g:go_highlight_extra_types = 1
+	let g:go_highlight_fields = 1
+	let g:go_highlight_functions = 1
+	let g:go_highlight_methods = 1
+	let g:go_highlight_operators = 1
+	let g:go_highlight_structs = 1
+	let g:go_highlight_types = 1
+
+	" Highlight same id
+	let g:go_auto_sameids = 1
+
+	" Add imports on format
+	let g:go_fmt_command = "goimports"
+
+	" Show variable type
+	let g:go_auto_type_info = 1
+
+augroup END
+
 
 " ------------------------------------------------------------
 " Mouse
