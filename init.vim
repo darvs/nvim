@@ -2,67 +2,67 @@
 " dein
 " ------------------------------------------------------------
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible		" be iMproved, required
+filetype off			" required
 
 if &compatible
-	set nocompatible            " be iMproved
+	set nocompatible	" be iMproved
 endif
 set runtimepath+=~/.config/nvim/dein.vim
 
 if $TERM =~ 'linux'
-  let g:airline_powerline_fonts = 0
-  let g:airline_theme = 'base16_ocean'
+	let g:airline_powerline_fonts = 0
+	let g:airline_theme = 'base16_ocean'
 else
-  let g:airline_powerline_fonts = 1
-  let g:airline_theme = 'nord'
+	let g:airline_powerline_fonts = 1
+	let g:airline_theme = 'nord'
 endif
 
 if dein#load_state('~/.config/nvim/dein')
 	call dein#begin('~/.config/nvim/dein')
 
-  call dein#add('~/.config/nvim/dein.vim')
+	call dein#add('~/.config/nvim/dein.vim')
 
-  " Completion
-  call dein#add('Shougo/deoplete.nvim')
+	" Completion
+	call dein#add('Shougo/deoplete.nvim')
 
-  " Asynchronous linter
-  call dein#add('w0rp/ale')
+	" Asynchronous linter
+	call dein#add('w0rp/ale')
 
-  " AsyncRun
-  call dein#add('skywind3000/asyncrun.vim')
+	" AsyncRun
+	call dein#add('skywind3000/asyncrun.vim')
 
-  " Go
-  call dein#add('fatih/vim-go')
+	" Go
+	call dein#add('fatih/vim-go')
 
-  " Ruby
-  call dein#add('vim-ruby/vim-ruby', {'on_ft': ['ruby', 'cucumber']})
-  call dein#add('Shougo/deoplete-rct', {'on_ft': ['ruby', 'cucumber']})
+	" Ruby
+	call dein#add('vim-ruby/vim-ruby', {'on_ft': ['ruby', 'cucumber']})
+	call dein#add('Shougo/deoplete-rct', {'on_ft': ['ruby', 'cucumber']})
 
-  " Nerdtree
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('Xuyuanp/nerdtree-git-plugin')
+	" Nerdtree
+	call dein#add('scrooloose/nerdtree')
+	call dein#add('Xuyuanp/nerdtree-git-plugin')
 
-  " Comments
-  call dein#add('scrooloose/nerdcommenter')
+	" Comments
+	call dein#add('scrooloose/nerdcommenter')
 
-  " Git
-  call dein#add('tpope/vim-fugitive')
+	" Git
+	call dein#add('tpope/vim-fugitive')
 
-  " Ansible
-  "call dein#add('pearofducks/ansible-vim', {'lazy': 1, 'on_ft': ['ansible', 'ansible_hosts', 'ansible_template', 'yaml.ansible', 'ruby.jinja2']})
-  call dein#add('chase/vim-ansible-yaml', {'on_ft': ['ansible', 'ansible_hosts', 'ansible_template', 'yaml.ansible', 'ruby.jinja2']})
+	" Ansible
+	"call dein#add('pearofducks/ansible-vim', {'lazy': 1, 'on_ft': ['ansible', 'ansible_hosts', 'ansible_template', 'yaml.ansible', 'ruby.jinja2']})
+	call dein#add('chase/vim-ansible-yaml', {'on_ft': ['ansible', 'ansible_hosts', 'ansible_template', 'yaml.ansible', 'ruby.jinja2']})
 
-  " Looks
- call dein#add('vim-airline/vim-airline')
- call dein#add('vim-airline/vim-airline-themes')
- call dein#add('arcticicestudio/nord-vim')
+	" Looks
+	call dein#add('vim-airline/vim-airline')
+	call dein#add('vim-airline/vim-airline-themes')
+	call dein#add('arcticicestudio/nord-vim')
 
-  " xterm-color-table: provides command :XtermColorTable
-  call dein#add('guns/xterm-color-table.vim')
+	" xterm-color-table: provides command :XtermColorTable
+	call dein#add('guns/xterm-color-table.vim')
 
-  call dein#end()
-  call dein#save_state()
+	call dein#end()
+	call dein#save_state()
 endif
 
 filetype plugin indent on
@@ -84,7 +84,7 @@ set number              " Show the line numbers on the left side.
 
 " set theme
 if $TERM !~ 'linux'
-  colorscheme nord
+	colorscheme nord
 endif
 
 " darvs-patch colorscheme
@@ -166,17 +166,17 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 
 " Symbols for nerdtree-git-plugin
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+	\ "Modified"  : "✹",
+	\ "Staged"    : "✚",
+	\ "Untracked" : "✭",
+	\ "Renamed"   : "➜",
+	\ "Unmerged"  : "═",
+	\ "Deleted"   : "✖",
+	\ "Dirty"     : "✗",
+	\ "Clean"     : "✔︎",
+	\ 'Ignored'   : '☒',
+	\ "Unknown"   : "?"
+	\ }
 
 " ------------------------------------------------------------
 " NERDCommenter
