@@ -100,14 +100,24 @@ set matchtime=0
 "set noshowmatch
 hi MatchParen cterm=none ctermbg=88 ctermfg=white
 
-" ale - always keep gutter sign columns
-let g:ale_sign_column_always = 1
+
 
 " ------------------------------------------------------------
 " Global config
 " ------------------------------------------------------------
 
 let mapleader="\\"
+
+
+" ------------------------------------------------------------
+" Ale
+" ------------------------------------------------------------
+
+" Always keep gutter sign columns
+let g:ale_sign_column_always = 1
+
+" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
 
 " ------------------------------------------------------------
 " AsyncRun
