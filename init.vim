@@ -33,7 +33,7 @@ if dein#load_state('~/.config/nvim/dein')
 	call dein#add('skywind3000/asyncrun.vim')
 
 	" Go
-	call dein#add('fatih/vim-go')
+	call dein#add('fatih/vim-go', {'on_ft': 'go'})
 
 	" Ruby
 	call dein#add('vim-ruby/vim-ruby', {'on_ft': ['ruby', 'cucumber']})
