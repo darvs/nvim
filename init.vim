@@ -39,6 +39,9 @@ if dein#load_state('~/.config/nvim/dein')
 	call dein#add('vim-ruby/vim-ruby', {'on_ft': ['ruby', 'cucumber']})
 	call dein#add('Shougo/deoplete-rct', {'on_ft': ['ruby', 'cucumber']})
 
+	" Systemd
+	call dein#add('Matt-Deacalion/vim-systemd-syntax', {'on_ft': 'systemd'})
+
 	" Nerdtree
 	call dein#add('scrooloose/nerdtree')
 	call dein#add('Xuyuanp/nerdtree-git-plugin')
@@ -171,7 +174,6 @@ augroup go_mappings
 	let g:go_auto_type_info = 1
 
 augroup END
-
 
 " ------------------------------------------------------------
 " Mouse
