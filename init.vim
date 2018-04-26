@@ -52,6 +52,9 @@ if dein#load_state('~/.config/nvim/dein')
 	" Git
 	call dein#add('tpope/vim-fugitive')
 
+	" Diff
+	call dein#add('rickhowe/diffchar.vim')
+
 	" Ansible
 	"call dein#add('pearofducks/ansible-vim', {'lazy': 1, 'on_ft': ['ansible', 'ansible_hosts', 'ansible_template', 'yaml.ansible', 'ruby.jinja2']})
 	call dein#add('chase/vim-ansible-yaml', {'on_ft': ['ansible', 'ansible_hosts', 'ansible_template', 'yaml.ansible', 'ruby.jinja2']})
@@ -101,7 +104,7 @@ set noshowmode
 "let g:loaded_matchparen = 1
 set matchtime=0
 "set noshowmatch
-hi MatchParen cterm=none ctermbg=88 ctermfg=white
+highlight MatchParen cterm=none ctermbg=88 ctermfg=white
 
 
 
@@ -173,6 +176,20 @@ augroup go_mappings
 	" Show variable type
 	let g:go_auto_type_info = 1
 
+augroup END
+
+" ------------------------------------------------------------
+" Diff
+" ------------------------------------------------------------
+
+augroup diff
+	autocmd!
+	autocmd FilterWritePre * if &diff | setlocal wrap linebreak nolist | endif
+
+	set diffopt+=vertical
+
+	highlight DiffChange cterm=bold ctermfg=yellow
+	highlight DiffText cterm=none ctermbg=yellow ctermfg=black
 augroup END
 
 " ------------------------------------------------------------
