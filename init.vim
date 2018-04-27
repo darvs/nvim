@@ -106,8 +106,6 @@ set matchtime=0
 "set noshowmatch
 highlight MatchParen cterm=none ctermbg=88 ctermfg=white
 
-
-
 " ------------------------------------------------------------
 " Global config
 " ------------------------------------------------------------
@@ -191,6 +189,34 @@ augroup diff
 	highlight DiffChange cterm=bold ctermfg=yellow
 	highlight DiffText cterm=none ctermbg=yellow ctermfg=black
 augroup END
+
+" ------------------------------------------------------------
+" Markdown
+" ------------------------------------------------------------
+
+augroup markdown
+	autocmd!
+	autocmd FileType markdown setlocal wrap linebreak nolist
+	autocmd FileType markdown call SetBufferWrapCursor()
+	" Remove the trailing whitespace check
+	autocmd FileType markdown let b:airline_whitespace_checks = ['indent']
+	autocmd FileType markdown setlocal list
+	autocmd FileType markdown setlocal listchars=trail:•
+augroup END
+
+function! SetBufferWrapCursor()
+	nnoremap <buffer> j gj
+	nnoremap <buffer> k gk
+	vnoremap <buffer> j gj
+	vnoremap <buffer> k gk
+	nnoremap <buffer> <Down> gj
+	nnoremap <buffer> <Up> gk
+	vnoremap <buffer> <Down> gj
+	vnoremap <buffer> <Up> gk
+	inoremap <buffer> <Down> <C-o>gj
+	inoremap <buffer> <Up> <C-o>gk
+endfunction
+
 
 " ------------------------------------------------------------
 " Mouse
