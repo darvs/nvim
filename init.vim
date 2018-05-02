@@ -310,4 +310,102 @@ let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
 " let g:syntastic_coffee_coffeelint_args = "--reporter csv"
 "
 "
-source ~/.config/nvim/vimrc.common
+" ------------------------------------------------------------
+" Key mappings
+" ------------------------------------------------------------
+"map <C-p>	 :bprevious<CR>
+"map <C-n>	 :bnext<CR>
+
+"nmap [ 	:bprevious<CR>
+"nmap ]		:bnext<CR>
+nmap <C-left>	:bp<CR>
+nmap <C-right>	:bn<CR>
+nmap <C-up>	<C-w><up>
+nmap <C-down>	<C-w><down>
+
+" ------------------------------------------------------------
+" Allow modelines, screw debian
+" ------------------------------------------------------------
+
+set modeline
+set modelines=5
+
+" ------------------------------------------------------------
+" Disable auto-continue comment, that screws with cut & paste
+" ------------------------------------------------------------
+
+autocmd FileType * setlocal formatoptions-=r
+
+" ------------------------------------------------------------
+" Numeric keyboard
+" ------------------------------------------------------------
+"  I think this might only have been used under Synergy
+"  So that could probably be removed
+
+map <Esc>Oq 1
+map <Esc>Or 2
+map <Esc>Os 3
+map <Esc>Ot 4
+map <Esc>Ou 5
+map <Esc>Ov 6
+map <Esc>Ow 7
+map <Esc>Ox 8
+map <Esc>Oy 9
+map <Esc>Op 0
+map <Esc>On .
+map <Esc>OR *
+map <Esc>OQ /
+map <Esc>Ol +
+map <Esc>OS -
+
+map! <Esc>Oq 1
+map! <Esc>Or 2
+map! <Esc>Os 3
+map! <Esc>Ot 4
+map! <Esc>Ou 5
+map! <Esc>Ov 6
+map! <Esc>Ow 7
+map! <Esc>Ox 8
+map! <Esc>Oy 9
+map! <Esc>Op 0
+map! <Esc>On .
+map! <Esc>OR *
+map! <Esc>OQ /
+map! <Esc>Ol +
+map! <Esc>OS -
+
+" ------------------------------------------------------------
+" airline
+" ------------------------------------------------------------
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" Fix a problem where the space is not wide enough
+let g:airline_symbols.space = "\ua0"
+
+if $TERM =~ 'linux'
+  " unicode symbols
+  "let g:airline_left_sep = '▶'
+  "let g:airline_right_sep = '◀'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.branch = '⎇'
+  "" let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.whitespace = 'Ξ'
+endif
+
+"" airline symbols
+"if $TERM ~! 'linux'
+"let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+"let g:airline_symbols.branch = ''
+"let g:airline_symbols.readonly = ''
+"let g:airline_symbols.linenr = ''
+"endif
+
