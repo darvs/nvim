@@ -12,10 +12,8 @@ set runtimepath+=~/.config/nvim/dein.vim
 
 if $TERM =~ 'linux'
 	let g:airline_powerline_fonts = 0
-	let g:airline_theme = 'base16_ocean'
 else
 	let g:airline_powerline_fonts = 1
-	let g:airline_theme = 'nord'
 endif
 
 if dein#load_state('~/.config/nvim/dein')
@@ -89,9 +87,8 @@ let g:deoplete#enable_at_startup = 1
 set number              " Show the line numbers on the left side.
 
 " set theme
-if $TERM !~ 'linux'
-	colorscheme nord
-endif
+let g:airline_theme = 'nord'
+colorscheme nord
 
 " darvs-patch colorscheme
 highlight LineNr ctermfg=08
@@ -111,7 +108,6 @@ highlight MatchParen cterm=none ctermbg=88 ctermfg=white
 " ------------------------------------------------------------
 
 let mapleader="\\"
-
 
 " ------------------------------------------------------------
 " Ale
@@ -216,7 +212,6 @@ function! SetBufferWrapCursor()
 	inoremap <buffer> <Down> <C-o>gj
 	inoremap <buffer> <Up> <C-o>gk
 endfunction
-
 
 " ------------------------------------------------------------
 " Mouse
@@ -381,31 +376,30 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+	let g:airline_symbols = {}
 endif
 
 " Fix a problem where the space is not wide enough
 let g:airline_symbols.space = "\ua0"
 
-if $TERM =~ 'linux'
-  " unicode symbols
-  "let g:airline_left_sep = '▶'
-  "let g:airline_right_sep = '◀'
-  let g:airline_symbols.linenr = '¶'
-  let g:airline_symbols.branch = '⎇'
-  "" let g:airline_symbols.paste = 'Þ'
-  let g:airline_symbols.paste = 'ρ'
-  let g:airline_symbols.whitespace = 'Ξ'
+if $NERD != 'on'
+	" unicode symbols
+	"let g:airline_left_sep = '▶'
+	"let g:airline_right_sep = '◀'
+	let g:airline_left_sep = ''
+	let g:airline_left_alt_sep = ''
+	let g:airline_right_sep = ''
+	let g:airline_right_alt_sep = ''
+	let g:airline_symbols.linenr = '¶'
+	let g:airline_symbols.branch = '⎇'
+	"" let g:airline_symbols.paste = 'Þ'
+	let g:airline_symbols.paste = 'ρ'
+	let g:airline_symbols.whitespace = 'Ξ'
+	let g:airline_symbols.linenr = '#'
+	let g:airline_symbols.maxlinenr = ''
+	let g:airline_symbols.readonly = 'ro'
 endif
 
-"" airline symbols
-"if $TERM ~! 'linux'
-"let g:airline_left_sep = ''
-"let g:airline_left_alt_sep = ''
-"let g:airline_right_sep = ''
-"let g:airline_right_alt_sep = ''
-"let g:airline_symbols.branch = ''
-"let g:airline_symbols.readonly = ''
-"let g:airline_symbols.linenr = ''
-"endif
-
+if $TERM == 'linux'
+	let g:airline_symbols.branch = ''
+endif
