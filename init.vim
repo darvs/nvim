@@ -169,7 +169,6 @@ augroup go_mappings
 
 	" Show variable type
 	let g:go_auto_type_info = 1
-
 augroup END
 
 " ------------------------------------------------------------
@@ -198,6 +197,9 @@ augroup markdown
 	autocmd FileType markdown let b:airline_whitespace_checks = ['indent']
 	autocmd FileType markdown setlocal list
 	autocmd FileType markdown setlocal listchars=trail:•
+
+	" Disable deoplete
+	autocmd FileType markdown let b:deoplete_disable_auto_complete=1
 augroup END
 
 function! SetBufferWrapCursor()
