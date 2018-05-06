@@ -75,6 +75,7 @@ syntax enable
 " call dein#install() if there are any plugins not installed yet
 if dein#check_install()
 	call dein#install()
+	normal UpdateRemotePlugins
 endif
 
 " Don't wait for Python
