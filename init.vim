@@ -1,20 +1,21 @@
 " ------------------------------------------------------------
+" Global config
+" ------------------------------------------------------------
+
+let mapleader="\\"
+
+" Don't wait for Python
+let g:python_host_skip_check = 1
+let g:python3_host_skip_check = 1
+
+" ------------------------------------------------------------
 " dein
 " ------------------------------------------------------------
 
 set nocompatible		" be iMproved, required
 filetype off			" required
 
-if &compatible
-	set nocompatible	" be iMproved
-endif
 set runtimepath+=~/.config/nvim/dein.vim
-
-if $TERM =~ 'linux'
-	let g:airline_powerline_fonts = 0
-else
-	let g:airline_powerline_fonts = 1
-endif
 
 if dein#load_state('~/.config/nvim/dein')
 	call dein#begin('~/.config/nvim/dein')
@@ -69,46 +70,17 @@ if dein#load_state('~/.config/nvim/dein')
 	call dein#save_state()
 endif
 
-filetype plugin indent on
-syntax enable
-
 " call dein#install() if there are any plugins not installed yet
 if dein#check_install()
 	call dein#install()
 	normal UpdateRemotePlugins
 endif
 
-" Don't wait for Python
-let g:python_host_skip_check = 1
-let g:python3_host_skip_check = 1
+filetype plugin indent on
+syntax enable
 
 " activate deoplete
 let g:deoplete#enable_at_startup = 1
-
-set number              " Show the line numbers on the left side.
-
-" set theme
-let g:airline_theme = 'nord'
-colorscheme nord
-
-" darvs-patch colorscheme
-highlight LineNr ctermfg=08
-highlight ErrorMsg ctermfg=15 ctermbg=88 guifg=#00FF00 guibg=#BF616A
-
-" remove the -- INSERT -- on the command line
-set noshowmode
-
-" Disable auto paren matching
-"let g:loaded_matchparen = 1
-set matchtime=0
-"set noshowmatch
-highlight MatchParen cterm=none ctermbg=88 ctermfg=white
-
-" ------------------------------------------------------------
-" Global config
-" ------------------------------------------------------------
-
-let mapleader="\\"
 
 " ------------------------------------------------------------
 " Ale
@@ -217,14 +189,6 @@ function! SetBufferWrapCursor()
 endfunction
 
 " ------------------------------------------------------------
-" Mouse
-" ------------------------------------------------------------
-" Mouse activated in command mode only
-" see :help mouse
-
-set mouse=c
-
-" ------------------------------------------------------------
 " Nerdtree
 " ------------------------------------------------------------
 " https://github.com/scrooloose/nerdtree
@@ -240,7 +204,6 @@ let NERDTreeDirArrows = 1
 
 " Disable 'Press ? for Help'
 " let NERDTreeMinimalUI = 1
-
 
 " Open nerdtree if vim is loaded without a file name
 autocmd StdinReadPre * let s:std_in=1
@@ -282,32 +245,9 @@ vmap <leader><Space> <Plug>NERDCommenterToggle
 " Matsie's Autocomplete
 " ------------------------------------------------------------
 
-set omnifunc=syntaxcomplete#Complete
-inoremap <lt>/ </<C-X><C-O>
+"set omnifunc=syntaxcomplete#Complete
+"inoremap <lt>/ </<C-X><C-O>
 
-" ------------------------------------------------------------
-" Syntastic
-" ------------------------------------------------------------
-
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" let g:syntastic_debug = 1
-
-" ------------------------------------------------------------
-" Syntastic Coffeescript
-" ------------------------------------------------------------
-au BufRead,BufNewFile *.coffee set filetype=coffee
-let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
-" let g:syntastic_coffee_coffeelint_args = "--reporter csv"
-"
-"
 " ------------------------------------------------------------
 " Key mappings
 " ------------------------------------------------------------
@@ -328,6 +268,25 @@ nmap <C-down>	<C-w><down>
 set modeline
 set modelines=5
 
+set number              " Show the line numbers on the left side.
+
+" set theme
+let g:airline_theme = 'nord'
+colorscheme nord
+
+" darvs-patch colorscheme
+highlight LineNr ctermfg=08
+highlight ErrorMsg ctermfg=15 ctermbg=88 guifg=#00FF00 guibg=#BF616A
+
+" remove the -- INSERT -- on the command line
+set noshowmode
+
+" Disable auto paren matching
+"let g:loaded_matchparen = 1
+set matchtime=0
+"set noshowmatch
+highlight MatchParen cterm=none ctermbg=88 ctermfg=white
+
 " ------------------------------------------------------------
 " Disable auto-continue comment, that screws with cut & paste
 " ------------------------------------------------------------
@@ -335,46 +294,19 @@ set modelines=5
 autocmd FileType * setlocal formatoptions-=r
 
 " ------------------------------------------------------------
-" Numeric keyboard
+" Mouse
 " ------------------------------------------------------------
-"  I think this might only have been used under Synergy
-"  So that could probably be removed
+" Mouse activated in command mode only
+" see :help mouse
 
-map <Esc>Oq 1
-map <Esc>Or 2
-map <Esc>Os 3
-map <Esc>Ot 4
-map <Esc>Ou 5
-map <Esc>Ov 6
-map <Esc>Ow 7
-map <Esc>Ox 8
-map <Esc>Oy 9
-map <Esc>Op 0
-map <Esc>On .
-map <Esc>OR *
-map <Esc>OQ /
-map <Esc>Ol +
-map <Esc>OS -
+set mouse=c
 
-map! <Esc>Oq 1
-map! <Esc>Or 2
-map! <Esc>Os 3
-map! <Esc>Ot 4
-map! <Esc>Ou 5
-map! <Esc>Ov 6
-map! <Esc>Ow 7
-map! <Esc>Ox 8
-map! <Esc>Oy 9
-map! <Esc>Op 0
-map! <Esc>On .
-map! <Esc>OR *
-map! <Esc>OQ /
-map! <Esc>Ol +
-map! <Esc>OS -
+
 
 " ------------------------------------------------------------
 " airline
 " ------------------------------------------------------------
+
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 
@@ -403,6 +335,9 @@ if $NERD != 'on'
 	let g:airline_symbols.readonly = 'ro'
 endif
 
-if $TERM == 'linux'
+if $TERM =~ 'linux'
+	let g:airline_powerline_fonts = 0
 	let g:airline_symbols.branch = ''
+else
+	let g:airline_powerline_fonts = 1
 endif
