@@ -4,9 +4,18 @@
 
 let mapleader="\\"
 
+let completion = "ncm2"
+let language_server = "LanguageClient-neovim"
+
 " Don't wait for Python
 let g:python_host_skip_check = 1
 let g:python3_host_skip_check = 1
+
+if $NERD == "on" && $TERM !~ 'linux'
+	let g:airline_powerline_fonts = 1
+else
+	let g:airline_powerline_fonts = 0
+endif
 
 " ------------------------------------------------------------
 " dein
@@ -22,8 +31,26 @@ if dein#load_state('~/.config/nvim/dein')
 
 	call dein#add('~/.config/nvim/dein.vim')
 
+	" Language Server
+	"
+	if language_server == "LanguageClient-neovim"
+		call dein#add('autozimu/LanguageClient-neovim', {'rev': 'next', 'build': 'bash install.sh'})
+	elseif language_server == "vim-lsc"
+		call dein#add("natebosch/vim-lsc")
+	end
+
 	" Completion
-	call dein#add('Shougo/deoplete.nvim')
+	"
+	if completion == "deoplete"
+		call dein#add('Shougo/deoplete.nvim')
+		if !has('nvim')
+			call dein#add('roxma/nvim-yarp')
+			call dein#add('roxma/vim-hug-neovim-rpc')
+		endif
+	elseif completion == "ncm2"
+		call dein#add("roxma/nvim-yarp")
+		call dein#add("ncm2/ncm2")
+	endif
 
 	" Asynchronous linter
 	call dein#add('w0rp/ale')
@@ -36,7 +63,9 @@ if dein#load_state('~/.config/nvim/dein')
 
 	" Ruby
 	call dein#add('vim-ruby/vim-ruby', {'on_ft': ['ruby', 'cucumber']})
-	call dein#add('Shougo/deoplete-rct', {'on_ft': ['ruby', 'cucumber']})
+	if completion == "deoplete"
+		call dein#add('Shougo/deoplete-rct', {'on_ft': ['ruby', 'cucumber']})
+	endif
 
 	" Systemd
 	call dein#add('Matt-Deacalion/vim-systemd-syntax', {'on_ft': 'systemd'})
@@ -79,8 +108,59 @@ endif
 filetype plugin indent on
 syntax enable
 
-" activate deoplete
-let g:deoplete#enable_at_startup = 1
+" ------------------------------------------------------------
+"  LanguageClient-neovim
+" ------------------------------------------------------------
+if language_server == "LanguageClient-neovim"
+	let g:LanguageClient_autostart = 1
+	"set omnifunc=LanguageClient#complete
+
+	let g:LanguageClient_serverCommands = {
+		\ 'ruby': ['solargraph', 'stdio'],
+	\ }
+
+	" LSPs settings "
+	"let g:LanguageClient_loadSettings = 1
+	"let g:LanguageClient_settingsPath =
+		"\ ".vim/settings.json"
+	" debugging "
+	let g:LanguageClient_loggingLevel='DEBUG'
+	let g:LanguageClient_loggingFile='/tmp/LanguageClient.log'
+
+	if completion == "deoplete"
+		call deoplete#custom#source('LanguageClient',
+			\ 'min_pattern_length',
+			\ 2)
+	endif
+endif
+
+" ------------------------------------------------------------
+"  vim-lsc
+" ------------------------------------------------------------
+if language_server == "vim-lsc"
+	let g:lsc_server_commands = {'ruby': 'solargraph stdio'}
+	let g:lsc_auto_map=1
+end
+
+" ------------------------------------------------------------
+"  ncm2
+" ------------------------------------------------------------
+if completion == "ncm2"
+	set completeopt=noinsert,menuone,noselect
+	autocmd BufEnter * call ncm2#enable_for_buffer()
+	autocmd TextChangedI * call ncm2#auto_trigger()
+	set omnifunc=ncm2#complete
+	set completefunc=ncm2#complete
+end
+
+" ------------------------------------------------------------
+"  Deoplete
+" ------------------------------------------------------------
+
+if completion == "deoplete"
+	let g:deoplete#enable_at_startup = 1
+	set completeopt=noinsert,menuone,noselect
+end
 
 " ------------------------------------------------------------
 " Ale
@@ -301,8 +381,6 @@ autocmd FileType * setlocal formatoptions-=r
 
 set mouse=c
 
-
-
 " ------------------------------------------------------------
 " airline
 " ------------------------------------------------------------
@@ -336,8 +414,5 @@ if $NERD != 'on'
 endif
 
 if $TERM =~ 'linux'
-	let g:airline_powerline_fonts = 0
 	let g:airline_symbols.branch = ''
-else
-	let g:airline_powerline_fonts = 1
 endif
