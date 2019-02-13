@@ -3,7 +3,6 @@ BASE=$(cd "$(dirname "${0}")" && pwd)
 
 [[ -L ~/.rubocop.yml ]] || ln -s ${BASE}/.rubocop.yml ~/
 
-git submodule foreach 'git checkout $(git config -f ../.gitmodules --get submodule.$path.branch)'
-git submodule foreach git pull
+git submodule update --init --recursive
 
 vim --headless -c "try | call dein#update() | UpdateRemotePlugins | finally | qall! | endtry"
