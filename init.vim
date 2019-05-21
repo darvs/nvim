@@ -87,6 +87,9 @@ if dein#load_state('~/.config/nvim/dein')
 	"call dein#add('pearofducks/ansible-vim', {'lazy': 1, 'on_ft': ['ansible', 'ansible_hosts', 'ansible_template', 'yaml.ansible', 'ruby.jinja2']})
 	call dein#add('chase/vim-ansible-yaml', {'on_ft': ['ansible', 'ansible_hosts', 'ansible_template', 'yaml.ansible', 'ruby.jinja2']})
 
+	" Acme C64 Assembly
+	call dein#add('leissa/vim-acme', {'on_ft': 'acme'})
+
 	" Looks
 	call dein#add('vim-airline/vim-airline')
 	call dein#add('vim-airline/vim-airline-themes')
