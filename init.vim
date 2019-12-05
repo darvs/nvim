@@ -189,6 +189,8 @@ let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status
 augroup ruby_mappings
 	autocmd!
 	autocmd FileType ruby,cucumber nmap <buffer> b :AsyncRun -cwd=<root> cucumber<CR>
+	autocmd FileType ruby,cucumber nmap <buffer> <C-[><C-[> :copen<CR>
+	autocmd FileType qf nmap <buffer> <C-]><C-]> :cclose<CR>
 augroup END
 
 " ------------------------------------------------------------
