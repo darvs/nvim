@@ -191,7 +191,7 @@ let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status
 
 augroup ruby_mappings
 	autocmd!
-	autocmd FileType ruby,cucumber nmap <buffer> b :AsyncRun -cwd=<root> CUCUMBER_COLORS=pending_param=black,bold:failed_param=black,bold:passed_param=black,bold:skipped_param=black,bold cucumber -c<CR>
+	autocmd FileType ruby,cucumber nmap <buffer> b :AsyncRun -cwd=<root> filteredcucumber<CR>:AirlineRefresh<CR>
 	autocmd FileType ruby,cucumber nmap <buffer> <C-[><C-[> :copen<CR>:AnsiEsc<CR>
 	autocmd FileType qf nmap <buffer> <C-]><C-]> :cclose<CR>
 augroup END
