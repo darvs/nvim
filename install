@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 BASE=$(cd "$(dirname "${0}")" && pwd)
 
-[[ -L ~/.rubocop.yml ]] || ln -s ${BASE}/.rubocop.yml ~/
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein_installer.sh
+sh ./dein_installer.sh ~/.cache/dein
 
-git submodule update --init --recursive
+[[ -L ~/.rubocop.yml ]] || ln -s ${BASE}/.rubocop.yml ~/
 
 vim --headless -c "try | call dein#update() | UpdateRemotePlugins | finally | qall! | endtry"

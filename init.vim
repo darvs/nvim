@@ -24,12 +24,12 @@ endif
 set nocompatible		" be iMproved, required
 filetype off			" required
 
-set runtimepath+=~/.config/nvim/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-if dein#load_state('~/.config/nvim/dein')
-	call dein#begin('~/.config/nvim/dein')
+if dein#load_state('~/.cache/dein')
+	call dein#begin('~/.cache/dein')
 
-	call dein#add('~/.config/nvim/dein.vim')
+	call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
 	" Language Server
 	"
