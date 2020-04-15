@@ -24,12 +24,12 @@ endif
 set nocompatible		" be iMproved, required
 filetype off			" required
 
-set runtimepath+=~/.config/nvim/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-if dein#load_state('~/.config/nvim/dein')
-	call dein#begin('~/.config/nvim/dein')
+if dein#load_state('~/.cache/dein')
+	call dein#begin('~/.cache/dein')
 
-	call dein#add('~/.config/nvim/dein.vim')
+	call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
 	" Language Server
 	"
@@ -97,6 +97,9 @@ if dein#load_state('~/.config/nvim/dein')
 
 	" xterm-color-table: provides command :XtermColorTable
 	call dein#add('guns/xterm-color-table.vim')
+
+	" ANSI Escape Code support
+	call dein#add('powerman/vim-plugin-AnsiEsc')
 
 	call dein#end()
 	call dein#save_state()
@@ -188,7 +191,9 @@ let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status
 
 augroup ruby_mappings
 	autocmd!
-	autocmd FileType ruby,cucumber nmap <buffer> b :AsyncRun -cwd=<root> cucumber<CR>
+	autocmd FileType ruby,cucumber nmap <buffer> b :AsyncRun -cwd=<root> filteredcucumber<CR>:AirlineRefresh<CR>
+	autocmd FileType ruby,cucumber nmap <buffer> <C-[><C-[> :copen<CR>:AnsiEsc<CR>
+	autocmd FileType qf nmap <buffer> <C-]><C-]> :cclose<CR>
 augroup END
 
 " ------------------------------------------------------------
