@@ -280,6 +280,18 @@ function! SetBufferWrapCursor()
 endfunction
 
 " ------------------------------------------------------------
+"  ACME Cross-Assembler
+" ------------------------------------------------------------
+
+augroup acme
+	autocmd!
+	autocmd FileType acme let g:NERDSpaceDelims = 1
+	autocmd FileType acme let g:NERDCompactSexyComs = 1
+augroup END
+
+let g:NERDCustomDelimiters = { 'acme': { 'left': ';','right': '' } }
+
+" ------------------------------------------------------------
 " yaml
 " ------------------------------------------------------------
 
