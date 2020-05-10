@@ -101,6 +101,9 @@ if dein#load_state('~/.cache/dein')
 	" ANSI Escape Code support
 	call dein#add('powerman/vim-plugin-AnsiEsc')
 
+	" Helm 
+	call dein#add('towolf/vim-helm')
+
 	call dein#end()
 	call dein#save_state()
 endif
@@ -275,6 +278,16 @@ function! SetBufferWrapCursor()
 	inoremap <buffer> <Down> <C-o>gj
 	inoremap <buffer> <Up> <C-o>gk
 endfunction
+
+" ------------------------------------------------------------
+" yaml
+" ------------------------------------------------------------
+
+augroup yaml
+	autocmd!
+	"autocmd FileType yaml setlocal foldmethod=indent
+	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup end
 
 " ------------------------------------------------------------
 " Nerdtree
