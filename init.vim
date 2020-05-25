@@ -75,7 +75,7 @@ if dein#load_state('~/.cache/dein')
 	call dein#add('Xuyuanp/nerdtree-git-plugin')
 
 	" Comments
-	call dein#add('scrooloose/nerdcommenter')
+	call dein#add('preservim/nerdcommenter')
 
 	" Git
 	call dein#add('tpope/vim-fugitive')
@@ -299,6 +299,15 @@ augroup yaml
 	autocmd!
 	"autocmd FileType yaml setlocal foldmethod=indent
 	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup end
+
+" ------------------------------------------------------------
+" helm
+" ------------------------------------------------------------
+" Override the vim-helm plugin to add yaml type
+augroup helm
+	autocmd!
+	autocmd BufRead,BufNewFile */templates/*.yaml set ft=helm.yaml
 augroup end
 
 " ------------------------------------------------------------
