@@ -354,7 +354,7 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 " Symbols for nerdtree-git-plugin
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
 	\ "Modified"  : "✹",
 	\ "Staged"    : "✚",
 	\ "Untracked" : "✭",
