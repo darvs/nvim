@@ -5,6 +5,7 @@
 let mapleader="\\"
 
 let completion = "ncm2"
+"let completion = "deoplete"
 let language_server = "LanguageClient-neovim"
 
 " Don't wait for Python
@@ -198,6 +199,19 @@ augroup ruby_mappings
 	autocmd FileType ruby,cucumber nmap <buffer> <C-[><C-[> :copen<CR>:AnsiEsc<CR>
 	autocmd FileType qf nmap <buffer> <C-]><C-]> :cclose<CR>
 augroup END
+
+" ------------------------------------------------------------
+" Python
+" ------------------------------------------------------------
+
+augroup python_mappings
+	autocmd!
+	autocmd FileType python nmap <buffer> b :AsyncRun -cwd=<root> make<CR>
+	autocmd FileType python nmap <buffer> <C-[><C-[> :copen<CR>:AnsiEsc<CR>
+	autocmd FileType qf nmap <buffer> <C-]><C-]> :cclose<CR>
+augroup END
+
+
 
 " ------------------------------------------------------------
 " Go
