@@ -4,8 +4,8 @@
 
 let mapleader="\\"
 
-let completion = "ncm2"
-"let completion = "deoplete"
+"let completion = "ncm2"
+let completion = "deoplete"
 let language_server = "LanguageClient-neovim"
 
 " Don't wait for Python
@@ -54,7 +54,7 @@ if dein#load_state('~/.cache/dein')
 	endif
 
 	" Asynchronous linter
-	call dein#add('w0rp/ale')
+	call dein#add('dense-analysis/ale')
 
 	" AsyncRun
 	call dein#add('skywind3000/asyncrun.vim')
@@ -65,7 +65,8 @@ if dein#load_state('~/.cache/dein')
 	" Ruby
 	call dein#add('vim-ruby/vim-ruby', {'on_ft': ['ruby', 'cucumber']})
 	if completion == "deoplete"
-		call dein#add('Shougo/deoplete-rct', {'on_ft': ['ruby', 'cucumber']})
+		"call dein#add('Shougo/deoplete-rct', {'on_ft': ['ruby', 'cucumber']})
+		call dein#add('etordera/deoplete-ruby', {'on_ft': ['ruby', 'cucumber']})
 	endif
 
 	" Systemd
@@ -181,6 +182,8 @@ let g:ale_sign_column_always = 1
 
 " Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
+
+let g:ale_linters = {'ruby': ['rubocop']}
 
 " ------------------------------------------------------------
 " AsyncRun
