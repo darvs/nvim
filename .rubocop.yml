@@ -1,3 +1,6 @@
+AllCops:
+  TargetRubyVersion: 2.7
+  
 Metrics/MethodLength:
         Enabled: false
 
@@ -18,3 +21,6 @@ Layout/SpaceInsideBlockBraces:
 
 Layout/LeadingCommentSpace:
         Enabled: false
+
+Metrics/LineLength:
+        Max: 9000

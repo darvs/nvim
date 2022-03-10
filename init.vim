@@ -4,7 +4,8 @@
 
 let mapleader="\\"
 
-let completion = "ncm2"
+"let completion = "ncm2"
+let completion = "deoplete"
 let language_server = "LanguageClient-neovim"
 
 " Don't wait for Python
@@ -53,7 +54,7 @@ if dein#load_state('~/.cache/dein')
 	endif
 
 	" Asynchronous linter
-	call dein#add('w0rp/ale')
+	call dein#add('dense-analysis/ale')
 
 	" AsyncRun
 	call dein#add('skywind3000/asyncrun.vim')
@@ -64,7 +65,8 @@ if dein#load_state('~/.cache/dein')
 	" Ruby
 	call dein#add('vim-ruby/vim-ruby', {'on_ft': ['ruby', 'cucumber']})
 	if completion == "deoplete"
-		call dein#add('Shougo/deoplete-rct', {'on_ft': ['ruby', 'cucumber']})
+		"call dein#add('Shougo/deoplete-rct', {'on_ft': ['ruby', 'cucumber']})
+		call dein#add('etordera/deoplete-ruby', {'on_ft': ['ruby', 'cucumber']})
 	endif
 
 	" Systemd
@@ -75,7 +77,7 @@ if dein#load_state('~/.cache/dein')
 	call dein#add('Xuyuanp/nerdtree-git-plugin')
 
 	" Comments
-	call dein#add('scrooloose/nerdcommenter')
+	call dein#add('preservim/nerdcommenter')
 
 	" Git
 	call dein#add('tpope/vim-fugitive')
@@ -184,6 +186,8 @@ let g:ale_sign_column_always = 1
 " Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
 
+let g:ale_linters = {'ruby': ['rubocop']}
+
 " ------------------------------------------------------------
 " AsyncRun
 " ------------------------------------------------------------
@@ -201,6 +205,19 @@ augroup ruby_mappings
 	autocmd FileType ruby,cucumber nmap <buffer> <C-[><C-[> :copen<CR>:AnsiEsc<CR>
 	autocmd FileType ruby,cucumber,qf nmap <buffer> <C-]><C-]> :cclose<CR>
 augroup END
+
+" ------------------------------------------------------------
+" Python
+" ------------------------------------------------------------
+
+augroup python_mappings
+	autocmd!
+	autocmd FileType python nmap <buffer> b :AsyncRun -cwd=<root> make<CR>
+	autocmd FileType python nmap <buffer> <C-[><C-[> :copen<CR>:AnsiEsc<CR>
+	autocmd FileType qf nmap <buffer> <C-]><C-]> :cclose<CR>
+augroup END
+
+
 
 " ------------------------------------------------------------
 " Go
@@ -325,6 +342,15 @@ augroup yaml
 augroup end
 
 " ------------------------------------------------------------
+" helm
+" ------------------------------------------------------------
+" Override the vim-helm plugin to add yaml type
+augroup helm
+	autocmd!
+	autocmd BufRead,BufNewFile */templates/*.yaml set ft=helm.yaml
+augroup end
+
+" ------------------------------------------------------------
 " Nerdtree
 " ------------------------------------------------------------
 " https://github.com/scrooloose/nerdtree
@@ -354,7 +380,7 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 " Symbols for nerdtree-git-plugin
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
 	\ "Modified"  : "✹",
 	\ "Staged"    : "✚",
 	\ "Untracked" : "✭",
