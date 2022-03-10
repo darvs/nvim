@@ -90,6 +90,9 @@ if dein#load_state('~/.cache/dein')
 	" Acme C64 Assembly
 	call dein#add('leissa/vim-acme', {'on_ft': 'acme'})
 
+	" Hashicorp Packer
+	call dein#add('jvirtanen/vim-hcl', {'on_ft:': 'hcl'})
+
 	" Looks
 	call dein#add('vim-airline/vim-airline')
 	call dein#add('vim-airline/vim-airline-themes')
