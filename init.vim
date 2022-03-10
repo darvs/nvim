@@ -239,6 +239,26 @@ augroup go_mappings
 augroup END
 
 " ------------------------------------------------------------
+" C
+" ------------------------------------------------------------
+
+augroup c_mappings
+	autocmd!
+	autocmd FileType c,cpp nmap <buffer> b :AsyncRun -cwd=<root> make<CR>:AirlineRefresh<CR>
+	autocmd FileType c,cpp nmap <buffer> <C-[><C-[> :copen<CR>:AnsiEsc<CR>
+	autocmd FileType qf nmap <buffer> <C-]><C-]> :cclose<CR>
+
+
+	" TABS
+	autocmd FileType c,cpp set noexpandtab
+	autocmd FileType c,cpp set shiftwidth=4
+	autocmd FileType c,cpp set softtabstop=4
+	autocmd FileType c,cpp set tabstop=4
+
+	let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
+augroup END
+
+" ------------------------------------------------------------
 " Diff
 " ------------------------------------------------------------
 
