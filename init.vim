@@ -199,7 +199,7 @@ augroup ruby_mappings
 	autocmd!
 	autocmd FileType ruby,cucumber nmap <buffer> b :AsyncRun -cwd=<root> filteredcucumber<CR>:AirlineRefresh<CR>
 	autocmd FileType ruby,cucumber nmap <buffer> <C-[><C-[> :copen<CR>:AnsiEsc<CR>
-	autocmd FileType qf nmap <buffer> <C-]><C-]> :cclose<CR>
+	autocmd FileType ruby,cucumber,qf nmap <buffer> <C-]><C-]> :cclose<CR>
 augroup END
 
 " ------------------------------------------------------------
