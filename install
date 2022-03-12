@@ -6,4 +6,4 @@ sh ./dein_installer.sh ~/.cache/dein
 
 [[ -L ~/.rubocop.yml ]] || ln -s ${BASE}/.rubocop.yml ~/
 
-nvim --headless -c "try|call dein#update()|finally|qall!|endtry<cr>"
+nvim --headless -c "try|call dein#update()|UpdateRemotePlugins|finally|qall!|endtry<cr>"
